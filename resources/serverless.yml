@@ -1,0 +1,31 @@
+service:
+  name: express-ts-demo
+
+component: aws-dynamodb
+name: backend-db
+
+inputs:
+  name: ${name}-${stage}
+  region: ${env:AWS_REGION}
+  deletionPolicy: retain
+  attributeDefinitions:
+    - AttributeName: hk
+      AttributeType: S
+    - AttributeName: sk
+      AttributeType: S
+    - AttributeName: sk2
+      AttributeType: S
+  keySchema:
+    - AttributeName: hk
+      KeyType: HASH
+    - AttributeName: sk
+      KeyType: RANGE
+  globalSecondaryIndexes:
+    - IndexName: gsi1
+      KeySchema:
+        - AttributeName: sk2
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL

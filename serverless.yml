@@ -1,0 +1,13 @@
+service:
+  name: express-ts-demo
+
+component: express
+name: backend
+stage: dev
+
+inputs:
+  src:
+    src: ./
+    exclude:
+      - src
+  roleName: backend-permissions-${env:STAGE}
