@@ -1,6 +1,5 @@
-service:
-  name: express-ts-demo
-
+app: express-ts-demo
+org: suedo
 component: express
 name: backend
 stage: dev
